@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--        sq1映射文件:写sq1语句的 ，mybatis会 执行这些sql-->
+<!--        1.指定约束文件  mybatis -3 -mapper.dtd是约束文件的名称，扩 展名是dtd的。
+         2.约束文件作用:限制，检查在当前文件中出现的标签，属性必须符合mybatis的要求。-->
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mapper 是当前文件的根标签， 必须的。 namespace :叫做命名空间， 唯一值的 可以是自定义的字符串。要求你使用dao接口的全限定名称。-->
+<!--        在mapper标签中写sql语句-->
+<mapper namespace="com.mybatisplus.dao.mapper.StudentMapper">
+
+    <!--        select表示查询，id表示sql语法的唯一标识，mybatis会使用这个id值来找到要执行的sql语句，要求用接口中的方法名称-->
+    <!--        resultType表示返回的结果类型，值为该类型的全类名-->
+
+
+    <!-- resultMap最终还是要将结果映射到pojo上，type就是指定映射到哪一个pojo -->
+    <!-- id：设置ResultMap的id -->
+    <resultMap type="com.mybatisplus.entity.Student" id="StudentResultMap">
+        <!-- 定义主键 ,非常重要。如果是多个字段,则定义多个id -->
+        <!-- property：主键在pojo中的属性名 -->
+        <!-- column：主键在数据库中的列名 -->
+        <id property="id" column="id"/>
+
+        <!-- 定义普通属性 -->
+        <!--        <result property="userId" column="user_id" />-->
+        <result property="name" column="user_name"/>
+        <result property="age" column="user_age"/>
+        <result property="email" column="email"/>
+        <result property="userStatus" column="user_status"/>
+
+    </resultMap>
+
+    <select id="selectById" resultMap="StudentResultMap" parameterType="Integer">
+        <!--        要执行的sql语句-->
+        select * from student where id=#{id};
+    </select>
+
+
+    <insert id="insertStudent" parameterType="com.mybatisplus.entity.Student">
+        insert into student(user_name,user_age,user_status,email) values (#{name},#{age},#{userStatus},#{email})
+    </insert>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--根目录-->
+<configuration>
+
+    <!--settings :控制mybatis全 局行为-->
+    <settings>
+        <!--设置mybatis输出日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!--    指定数据库设置，可设置多个  default是指定使用哪一个数据库信息，用于连接数据库-->
+    <environments default="development">
+        <!--        environment表示单个数据库的设置，id表示为这个数据库取名-->
+        <environment id="development">
+            <!--            transactionManager指定事物类型-->
+            <!--            type=jdbc（即使用jdbc中的connection，进行提交和回滚事物）-->
+            <transactionManager type="JDBC"/>
+            <!--            dataSource表示数据源 type表示要使用哪一个数据库连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/javaweb?useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+
+
+    </environments>
+
+    <!--    sql mapper(sql映射的位置)-->
+    <mappers>
+
+
+        <!--        一个mapper标签指定一个文件的位置-->
+        <!--        从类路径开始的路径信息，target/classess（类路径）-->
+        <mapper resource="javatest01/dao/UserDao.xml"/>
+
+    </mappers>
+</configuration
