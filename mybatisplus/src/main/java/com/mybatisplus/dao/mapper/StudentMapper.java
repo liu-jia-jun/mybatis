@@ -12,7 +12,7 @@ import java.sql.Wrapper;
  * @author 刘佳俊
  * @Date 2021/9/4
  */
-
+@Mapper
 public interface StudentMapper extends BaseMapper<Student> {
 
     Student selectById(Integer id);
