@@ -1,9 +1,6 @@
 package com.mybatisplus.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 /**
@@ -34,6 +31,15 @@ public class Address {
     private String city;
 
     private String userStreet;
+
+
+    /**
+     * @Version , 是配合乐观锁的使用，数据库表中添加version字段，实体类中添加version属性
+     */
+
+    @Version
+    @TableField(value = "version",fill = FieldFill.INSERT)
+    private Integer version;
 
 
 }

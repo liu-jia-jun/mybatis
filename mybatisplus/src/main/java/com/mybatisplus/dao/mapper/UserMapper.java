@@ -2,6 +2,7 @@ package com.mybatisplus.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mybatisplus.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @author 刘佳俊
@@ -14,5 +15,6 @@ import com.mybatisplus.entity.User;
  * BaseMapper 是MP框架中的对象，定义了关于实体类CRUD的相关操作方法
  *
  */
+@Mapper
 public interface UserMapper extends BaseMapper<User> {
 }
