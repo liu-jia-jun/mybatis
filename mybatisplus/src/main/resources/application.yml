@@ -1,10 +1,12 @@
 spring:
+  profiles:
+    # 设置环境，dev，test，prod
+    active: dev
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/mybatis?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
-
 
 mybatis-plus:
 #  mybatis-plus 的配置信息
@@ -12,3 +14,5 @@ mybatis-plus:
 #    配置mybatis-plus运行时控制台上打印 sql 语句
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:xml/*Mapper.xml
+
+

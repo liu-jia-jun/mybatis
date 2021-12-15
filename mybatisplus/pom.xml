@@ -18,6 +18,12 @@
     <dependencies>
 
 
+        <!--p6spy 依赖引入-->
+        <dependency>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <version>3.8.2</version>
+        </dependency>
 
 <!--加入代码生成器的依赖-->
         <dependency>
